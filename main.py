@@ -83,13 +83,15 @@ def main():
     if args.quiet:
         logging.disable(logging.CRITICAL)
 
-    if args.text and args.file:
+    if args.text is not None and args.file is not None:
         # The if/elif below used to hash the text and silently ignore a
         # file given in the same command, which is an easy mistake to miss
         # in a script. Refuse the combination instead of picking a winner.
         parser.error("Use only one of --text or --file, not both.")
 
-    if args.text:
+    # is-not-None, not truthiness: -t "" asks for the hash of the empty
+    # string, a well defined digest, and used to be refused as no input.
+    if args.text is not None:
         try:
             result = hash_text(args.text, args.algorithm)
             print(f"Hashed text: {result}")
@@ -97,7 +99,7 @@ def main():
             logging.error(f"Error hashing text: {e}")
             sys.exit(1)
 
-    elif args.file:
+    elif args.file is not None:
         try:
             result = hash_file(args.file, args.algorithm)
             print(f"Hashed file: {result}")
