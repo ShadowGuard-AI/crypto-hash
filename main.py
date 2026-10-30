@@ -27,7 +27,12 @@ def setup_argparse():
     parser.add_argument(
         "-a", "--algorithm",
         help="The hashing algorithm to use (default: sha256).",
-        choices=hashlib.algorithms_available,
+        # algorithms_available also lists the SHAKE functions, whose
+        # hexdigest() requires a length argument this tool never passes,
+        # so offering them only set up a run that always failed. Offer the
+        # fixed-length digests, which are what a hex digest tool can print.
+        choices=sorted(a for a in hashlib.algorithms_available
+                       if not a.startswith("shake")),
         default="sha256"
     )
     parser.add_argument(
@@ -77,6 +82,12 @@ def main():
 
     if args.quiet:
         logging.disable(logging.CRITICAL)
+
+    if args.text and args.file:
+        # The if/elif below used to hash the text and silently ignore a
+        # file given in the same command, which is an easy mistake to miss
+        # in a script. Refuse the combination instead of picking a winner.
+        parser.error("Use only one of --text or --file, not both.")
 
     if args.text:
         try:

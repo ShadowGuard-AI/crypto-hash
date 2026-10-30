@@ -4,32 +4,28 @@
 
 ### Project Description
 
-Crypto Hash is a command-line tool that provides basic cryptographic operations, including file and text hashing. It utilizes the Python cryptography library and offers a user-friendly interface for secure and efficient hashing tasks.
-
-### Installation
-
-To install Crypto Hash, ensure you have Python 3 or higher and pip installed. Then, run the following command:
-
-```
-pip install crypto-hash
-```
+Crypto Hash prints the hex digest of a text string or of a file's
+contents, using Python's standard library `hashlib`. It has no
+third-party dependencies and no subcommands; there is no verify mode,
+so checking a file means hashing it and comparing the printed digest
+yourself.
 
 ### Usage Examples
 
 ```
-# Compute SHA-256 hash of a file
-crypto-hash hash-file -a sha256 file.txt
+# SHA-256 of a string (sha256 is the default algorithm)
+python main.py --text "Hello World"
 
-# Compute MD5 hash of a string
-crypto-hash hash-text -a md5 "Hello World"
+# MD5 of a file's contents
+python main.py --file file.txt --algorithm md5
 
-# Verify the integrity of a file using its hash
-crypto-hash verify-file -f original.txt -h original.txt.sha256
+# Quiet mode prints only the digest line
+python main.py --text "Hello World" --quiet
 ```
 
-### Security Warnings
-
-Use Crypto Hash cautiously, as it involves handling sensitive cryptographic data. Ensure you follow best practices for data security, including strong passwords and secure storage methods.
+Give either `--text` or `--file`, not both. The SHAKE algorithms are
+not offered: their digests need a length argument, which this tool does
+not take.
 
 ### License
 
