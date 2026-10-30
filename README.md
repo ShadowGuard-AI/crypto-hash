@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 ## Crypto Hash
 
 ### Project Description
