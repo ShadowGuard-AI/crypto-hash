@@ -4,7 +4,8 @@ import logging
 import os
 import sys
 
-# Configure logging
+# This runs at import, not inside main, so importing this file turns
+# logging on for the whole process whether the importer wanted it or not.
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def setup_argparse():
@@ -49,6 +50,9 @@ def hash_text(text, algorithm):
     try:
         logging.info(f"Hashing text with algorithm: {algorithm}")
         hasher = hashlib.new(algorithm)
+        # I name utf-8 here instead of taking the encode() default, so
+        # the byte form behind a digest is pinned in the code and does
+        # not shift if a future edit changes how the text was read in.
         hasher.update(text.encode('utf-8'))
         return hasher.hexdigest()
     except ValueError as e:
@@ -66,6 +70,10 @@ def hash_file(filepath, algorithm):
         logging.info(f"Hashing file '{filepath}' with algorithm: {algorithm}")
         hasher = hashlib.new(algorithm)
         with open(filepath, 'rb') as f:
+            # 4096 bytes at a time, so a file of any size never sits
+            # whole in memory. update() folds each chunk in as it goes,
+            # so chunking changes nothing about the final digest. The
+            # b"" sentinel is what read() returns at the end of the file.
             for chunk in iter(lambda: f.read(4096), b""):
                 hasher.update(chunk)
         return hasher.hexdigest()
@@ -81,6 +89,9 @@ def main():
     args = parser.parse_args()
 
     if args.quiet:
+        # disable() is process wide and covers the error logs below too,
+        # not just the info lines. With quiet on, a failed run is visible
+        # only in the exit code, which is the trade I accept for scripts.
         logging.disable(logging.CRITICAL)
 
     if args.text is not None and args.file is not None:
