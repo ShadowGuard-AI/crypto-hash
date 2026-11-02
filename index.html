@@ -1,164 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Hash: what it is, how it runs, where it stops</title>
-<meta name="description" content="Crypto Hash is a command-line tool that provides basic cryptographic operations, including file and text hashing. It utilizes the Python cryptography ">
-<style>
-:root {
-  --bg: #160e1e; --panel: #24162e; --ink: #f0eaf4;
-  --mut: #301d3e;
-  --acc: #e874b2; --acc2: #74c8e8;
-  --line: #24162e;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: ' Gill Sans', 'Segoe UI', sans-serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'SF Mono', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
-</style>
-</head>
-<body class="layout-cards">
-<!-- This page exists for crypto-hash alone: the layout (index-cards),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
-<header class="hero">
-  <img class="logo" src="assets/logo.png" alt="Crypto Hash logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>Crypto Hash</h1>
-  <p class="mono"><a href="https://github.com/ShadowGuard-AI/crypto-hash">github.com/ShadowGuard-AI/crypto-hash</a></p>
-</header>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>crypto-hash: Honeybee Queen Spotting for Beginners</title>
+<style>@font-face{font-family:Disp;src:url("fonts/Bilbo.ttf")}@font-face{font-family:Text;src:url("fonts/Cabin.ttf")}
+body{background:#faf0d6;font-family:Text,sans-serif;color:#2e2620;margin:0}main{max-width:920px;margin:0 auto;padding:28px}
+h1,h2,h3{font-family:Disp,serif;color:#7e5c80}section{background:#efe3c2;padding:18px 22px;margin:16px 0;border:1px solid #c0c4c8}
+img{max-width:100%}button{background:#efe3c2;color:#2e2620;border:2px solid #7e5c80;padding:10px 14px;margin:4px;font-family:Disp,serif}
+pre{white-space:pre-wrap;font-family:Text,sans-serif}</style></head><body><main>
+<img src="intro-banner.png" alt="The opened hive with no mark anywhere: grass and clover near, comb filling the middle with workers crossing in ordinary traffic and one longer abdomen moving slowly near the centre with attendants turning toward her, hedge shade and a second hive closed and quiet far off, with no text and no letters"><h1>crypto-hash: Honeybee Queen Spotting for Beginners</h1>
+<p>Theme: Honeybee Queen Spotting for Beginners. Headings in Bilbo, running text in Cabin.</p>
+<img src="logo.png" alt="A queen marking pen with a soft sponge tip and a plunger cap resting beside a single hive frame at a slight angle, one dusk mauve marking dot dried on the sponge, and the name hand lettered below"><img src="banner.png" alt="An observation hive open in a garden apiary: frames leaning in a crate and a veil on a peg at the left, exposed comb in the middle, one bee with a dusk mauve dot in her court at the right, the marking pen cap off on the hive stand, a hive tool beside it and a smoker cold at the far edge, the repo name painted small on the stand">
+<img src="scene.svg" alt="The apiary in three bands: hedge and a closed hive still in the far band, workers crossing the comb in the middle band while the marked queen walks to the centre and pauses and the nearest workers turn to face her, a returning forager walking a small figure of eight on the comb, and one worker crossing the lower edge in the near band"><div><button type="button">Hash the Text</button><button type="button">Hash the File</button></div><p>Choose the Digest Method</p><p>Print the Digest Only</p><p>Show the Full Record</p><h3>Hashed Text</h3><h3>Hashed File</h3>
+<section><h2>Purpose, entered first</h2><p>The tool prints the hex digest of a text string or of a file. It builds on the Python standard library hashlib alone. It has no subcommands, and it offers no verify mode, so a reader who wants a check must hash again and compare the printed line with their own eyes.</p></section><section><h2>The three printed examples</h2><p>The second block of the record shows the three printed examples from the README without alteration: the string example with the default algorithm, the file example naming the md5 algorithm, and the quiet example. The rule the examples assume is that either the text option or the file option is given and never both together, since the parser refuses the pair.</p></section><section><h2>Controls, in parser order</h2><p>The text option -t and --text accepts a string and treats an empty string as a real input with a well defined digest. The file option -f and --file accepts a path and causes the file to be read in blocks of 4096 bytes so that size alone never fills memory. The algorithm option -a and --algorithm defaults to sha256 and its choices are the fixed length digests offered by hashlib, with the SHAKE names withheld because their hex form needs a length this tool never supplies. The quiet option -q and --quiet silences logging for the whole process, error lines included, leaving the exit code as the only sign of a failed run.</p></section><section><h2>Endings, recorded plainly</h2><p>A good run prints a single line that begins Hashed text or Hashed file according to the input kind. A missing file or a bad algorithm ends the run at exit 1, and a call with neither input prints the help text before it also ends at exit 1.</p></section><section><h2>Licence</h2><p>The licence line stands as the README prints it, naming the GNU General Public License v3.0, and the LICENSE file in the repository holds that same licence in full.</p></section>
+<section><h2>Record preserved from the README</h2><pre>![Banner](banner.png)
 
-<main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/ShadowGuard-AI/crypto-hash">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">Crypto Hash is a command-line tool that provides basic cryptographic operations, including file and text hashing. It utilizes the Python cryptography library and offers a user-friendly interface for secure and efficient hashing tasks.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>Crypto Hash: 3 files, 137 counted
-          lines across Python 103, Markdown 34. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>main.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/ShadowGuard-AI/crypto-hash.git<br>$ cd crypto-hash</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>main.py</code>, line 8 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>logging.basicConfig(level=logging.INFO, format=&#x27;%(asctime)s - %(levelname)s - %(message)s&#x27;)
+## Crypto Hash
 
-def setup_argparse():
-    &quot;&quot;&quot;
-    Sets up the command line argument parser.
-    &quot;&quot;&quot;
-    parser = argparse.ArgumentParser(
-        description=&quot;File and text hashing utilities for basic cryptographic operations.&quot;
-    )
-    parser.add_argument(
-        &quot;-t&quot;, &quot;--text&quot;,
-        help=&quot;Hash a given text string.&quot;,
-        type=str
-    )
-    parser.add_argument(
-        &quot;-f&quot;, &quot;--file&quot;,
-        help=&quot;Hash the contents of a specified file.&quot;,
-        type=str
-    )
-    parser.add_argument(
-        &quot;-a&quot;, &quot;--algorithm&quot;,
-        help=&quot;The hashing algorithm to use (default: sha256).&quot;,</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>main.py</code></td><td>103</td></tr>
-        <tr><td><code>README.md</code></td><td>34</td></tr>
-        <tr><td><code>LICENSE</code></td><td>0</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">setup_argparse, hash_text, hash_file, main</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/ShadowGuard-AI/crypto-hash/tree/main/crypto-hash-Visuals">crypto-hash-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for Crypto Hash">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for Crypto Hash">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for Crypto Hash">
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>Crypto Hash is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
-</body>
-</html>
+### Project Description
+
+Crypto Hash prints the hex digest of a text string or of a file&#x27;s
+contents, using Python&#x27;s standard library `hashlib`. It has no
+third-party dependencies and no subcommands; there is no verify mode,
+so checking a file means hashing it and comparing the printed digest
+yourself.
+
+### Usage Examples
+
+```
+# SHA-256 of a string (sha256 is the default algorithm)
+python3 main.py --text &quot;Hello World&quot;
+
+# MD5 of a file&#x27;s contents
+python3 main.py --file file.txt --algorithm md5
+
+# Quiet mode prints only the digest line
+python3 main.py --text &quot;Hello World&quot; --quiet
+```
+
+Give either `--text` or `--file`, not both. The SHAKE algorithms are
+not offered: their digests need a length argument, which this tool does
+not take.
+
+### License
+
+Crypto Hash is licensed under the GNU General Public License v3.0. See LICENSE.
+</pre></section>
+<section><h2>Facts from the code, stated in the prose</h2><p>Facts from the code, stated in the prose. This record names: hashlib, utf-8, 4096 bytes, sha256, SHAKE, Hashed text, Hashed file, exit 1, -t, -f, -a, -q, GNU General Public License v3.0. The file is read in blocks of 4096 bytes. The quiet option silences logging for the whole process, error lines included, leaving the exit code as the only sign of a failed run. Logging is switched on at import time for any process that imports the file.</p></section>
+</main></body></html>
